@@ -8,20 +8,17 @@
 
 char *read_com(void)
 {
-	ssize_t is_get_l;
-	size_t  line = 0, line_len = 0;
-	char *line_entered;
+	ssize_t entered_len;
+	size_t  line = 0;
+	char *entered = NULL;
 
-	is_get_l = getline(&line_entered, &line, stdin);
-	if (is_get_l == -1)
+	entered_len = getline(&entered, &line, stdin);
+	if (entered_len == -1)
 	{
 		perror("getline() Error");
 		exit(EXIT_FAILURE);
 	}
-	line_len = strlen(line_entered);
-	printf("enterlength = %lu\n", line_len);
+	entered[entered_len - 1] = '\0';
 
-	line_entered[line_len - 1] = '\0';
-
-	return (line_entered);
+	return (entered);
 }

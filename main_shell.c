@@ -1,19 +1,22 @@
 #include "shell.h"
 
 /**
- * main - Entry point
+ * main - Test
  *
- * Return: 0 on success
+ * Return: 0 On success
  */
 
 int main(void)
 {
-	char *line;
+	int nwords = 0;
+	char **arr;
 
-	prompt();
-	line = read_com();
-	printf("%s", line);
-
+	do {
+		prompt();
+		arr = split_com(read_com(), &nwords);
+		execute(arr);
+	} while (1);
 
 	return (0);
+
 }
